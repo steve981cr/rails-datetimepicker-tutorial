@@ -1,0 +1,72 @@
+<%= form_with(model: event, local: true, class: "col-md-8") do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= form.label :title, 'Event Title', class: 'control-label' %>
+    <%= form.text_field :title, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :held_on, "Date", class: 'control-label' %>        
+        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+          <%= form.text_field(:held_on, value: form.object.held_on ? form.object.held_on.strftime('%B %d, %Y') : nil, class: "form-control datetimepicker-input", data: {target:"#datetimepicker4"}) %>
+          <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+            <div class="input-group-text"><span class="fas fa-calendar-alt"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :start_time, "Start Time", class: 'control-label' %>        
+        <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+          <%= form.text_field(:start_time, value: form.object.start_time ? form.object.start_time.strftime('%I:%M %p') : nil, class: "form-control datetimepicker-input", data: {target:"#datetimepicker3"}) %>
+          <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+            <div class="input-group-text"><span class="far fa-clock"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <%= form.label :starts_at, 'Start Date and Time', class: 'control-label' %><br>
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+          <%= form.text_field(:starts_at, value: form.object.starts_at ? form.object.starts_at.strftime('%B %d, %Y %I:%M %p') : nil, class: "form-control datetimepicker-input", data: {target:"#datetimepicker1"}) %>
+          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-calendar-plus"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <%= form.label :ends_at, 'End Date and Time', class: 'control-label' %><br>
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+          <%= form.text_field(:ends_at, value: form.object.ends_at ? form.object.ends_at.strftime('%B %d, %Y %I:%M %p') : nil, class: "form-control datetimepicker-input", data: {target:"#datetimepicker2"}) %>
+          <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-calendar-plus"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
