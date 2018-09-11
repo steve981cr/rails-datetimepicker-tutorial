@@ -1,6 +1,6 @@
 # README
 
-This code goes with a tutorial at <a href="techandstartup.org/tutorials/rails-datetimepicker">http://www.techandstartup.org/tutorials/rails-datetimepicker</a>.
+This code goes with a tutorial at <a href="techandstartup.com/tutorials/rails-datetimepicker">https://www.techandstartup.com/tutorials/rails-datetimepicker</a>.
 
 How to add a datetimepicker to a Rails form.
 
